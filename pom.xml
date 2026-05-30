@@ -13,6 +13,18 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>VoltLedger</name>
 	<description>VoltLedger</description>
+	<modules>
+		<module>config-server</module>
+		<module>eureka-server</module>
+		<module>api-gateway</module>
+		<module>user-service</module>
+		<module>property-service</module>
+		<module>tenant-service</module>
+		<module>meter-service</module>
+		<module>billing-service</module>
+		<module>pdf-service</module>
+		<module>notification-service</module>
+	</modules>
 	<url/>
 	<licenses>
 		<license/>
@@ -76,6 +88,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 	</dependencies>
 
