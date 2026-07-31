@@ -8,5 +8,8 @@ spring:
     config:
       server:
         git:
-          default-label: main
           uri: https://github.com/Rajottam10/voltledger-configs.git
+          default-label: dev
+          username: Rajottam10
+          password: ${GITHUB_TOKEN}
+          clone-on-start: true
