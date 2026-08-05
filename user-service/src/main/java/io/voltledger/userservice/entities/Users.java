@@ -1,11 +1,15 @@
 package io.voltledger.userservice.entities;
 
+import io.voltledger.userservice.enums.UserType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -14,9 +18,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
+@Table(name = "users")
 public class Users extends BaseEntity{
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
 
     @Column(name = "email", nullable = false)
     private String email;
@@ -33,9 +41,12 @@ public class Users extends BaseEntity{
     @Column(name = "address")
     private String address;
 
-    //todo : why ManyToOne was used? what and why is fetch and cascase used? what does JoinColumn do?
+    @Column(name = "user_type", columnDefinition = "VARCHAR(10)")
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
+
+    //todo : why ManyToOne was used? what and why is fetch and cascade used? what does JoinColumn do?
     @JoinColumn(name = "status", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private Status status;
-    private boolean isSuperAdmin;
 }
