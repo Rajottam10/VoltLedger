@@ -25,6 +25,7 @@
 		<module>billing-service</module>
 		<module>pdf-service</module>
 		<module>notification-service</module>
+		<module>proto-contracts</module>
 	</modules>
 	<url/>
 	<licenses>
