@@ -1,9 +1,0 @@
-//syntax = "proto3";
-//
-//package sec01;
-//option java_package = "io.voltledger.userservice.models.sec01";
-//
-//message User {
-//  string name = 1;
-//  int32 age =2;
-//}
