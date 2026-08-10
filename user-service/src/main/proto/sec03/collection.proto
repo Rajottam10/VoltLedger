@@ -1,0 +1,30 @@
+//syntax = "proto3";
+//
+//package sec03;
+//
+//option java_multiple_files = true;
+//option java_package = "io.voltledger.userservice.models.sec03";
+//
+//message Book {
+//  string title = 1;
+//  string author = 2;
+//  int32 publication_year =3;
+//  BodyStyle body_style =4;
+//}
+//
+//message Library{
+//  string name = 1;
+//  repeated Book books = 2;
+//}
+//
+//enum BodyStyle {
+//  NOVEL =0;
+//  FICTION =1;
+//  NONFICTION =2;
+//}
+//
+//message Address {
+//  string name =1;
+//  int32 id =2;
+//  string city_name = 3;
+//}
