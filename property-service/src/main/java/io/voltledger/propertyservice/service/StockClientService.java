@@ -40,7 +40,7 @@ public class StockClientService {
 
             @Override
             public void onCompleted() {
-                System.out.println("Stock price stream  live update completed.");
+                System.out.println("Stock price stream live update completed.");
             }
         });
     }
