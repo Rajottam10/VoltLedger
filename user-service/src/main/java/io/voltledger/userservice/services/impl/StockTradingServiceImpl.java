@@ -1,5 +1,6 @@
 package io.voltledger.userservice.services.impl;
 
+import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import io.voltledger.proto.javatechie.StockRequest;
 import io.voltledger.proto.javatechie.StockResponse;
@@ -38,6 +39,10 @@ public class StockTradingServiceImpl extends StockTradingServiceGrpc.StockTradin
     @Override
     public void subscribeStockPrice(StockRequest request, StreamObserver<StockResponse> responseObserver) {
         String stockSymbol = request.getStockSymbol();
+        if(request.getStockSymbol().equals("NIFRA")){
+            responseObserver.onError((Status.NOT_FOUND.withDescription("The stockSymbol: " + request.getStockSymbol() +" couldn't be found.")).asRuntimeException());
+            return;
+        }
         try{
             for(int i=0; i<10; i++){
                 StockResponse stockResponse = StockResponse.newBuilder()
