@@ -30,16 +30,16 @@ public class Users extends BaseEntity{
     private String password;
 
     @ManyToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Roles role;
 
     @Column(name = "mobile_number")
-    private Long mobileNumber;
+    private String mobileNumber;
 
     @Column(name = "address")
     private String address;
 
-    //todo : why ManyToOne was used? what and why is fetch and cascade used? what does JoinColumn do?
     @JoinColumn(name = "status", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.LAZY)
     private Status status;
 }

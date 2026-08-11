@@ -11,12 +11,12 @@ CREATE TABLE IF NOT EXISTS `users` (
                                        `mobile_number`  VARCHAR(255) DEFAULT NULL,
                                        `address`        VARCHAR(255) NOT NULL,
                                        `role_id`        BIGINT       NOT NULL,
-                                       `user_type`      VARCHAR(20)  NOT NULL,
-                                       `status`         VARCHAR(20)  NOT NULL DEFAULT 'ACTIVE',
+                                       `status`         BIGINT       NOT NULL,
                                        `created_by`     BIGINT       DEFAULT NULL,
                                        `created_at`     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                        `updated_at`     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                                        CONSTRAINT pk_users PRIMARY KEY (`id`),
                                        CONSTRAINT uc_users_email UNIQUE (`email`),
+                                       CONSTRAINT `fk_users_status` FOREIGN KEY (`status`) REFERENCES `status` (`id`),
                                        CONSTRAINT fk_users_role FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
 );
