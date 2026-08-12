@@ -1,12 +1,13 @@
 package io.voltledger.userservice.repositories;
 
-import io.voltledger.userservice.entities.Roles;
+import io.voltledger.userservice.entities.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Roles, Long> {
-    Optional<Roles> getRolesByName(String name);
+public interface StatusRepository extends JpaRepository<Status, Long> {
+    Optional<Status> getStatusByName(String name);
 }
