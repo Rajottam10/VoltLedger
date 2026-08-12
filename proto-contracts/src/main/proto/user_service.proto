@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package voltledger.user;
+
+option java_multiple_files = true;
+option java_package = "io.voltledger.proto.user";
+
+service UserService {
+  rpc GetUserByEmail (GetUserByEmailRequest) returns (UserResponse);
+}
+
+message GetUserByEmailRequest {
+  string email =1;
+}
+
+message UserResponse {
+  int64 id =1;
+  string first_name =2;
+  string last_name = 3;
+  string email = 4;
+  string role = 5;
+  string status = 6;
+}
