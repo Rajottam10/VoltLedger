@@ -2,9 +2,12 @@ package io.voltledger.userservice.services.grpc;
 
 import io.grpc.stub.StreamObserver;
 import io.voltledger.proto.user.GetUserByEmailRequest;
+import io.voltledger.proto.user.LoginRequest;
+import io.voltledger.proto.user.LoginResponse;
 import io.voltledger.proto.user.UserResponse;
 import io.voltledger.proto.user.UserServiceGrpc;
 import io.voltledger.userservice.entities.Users;
+import io.voltledger.userservice.services.AuthService;
 import io.voltledger.userservice.services.UserService;
 import org.springframework.grpc.server.service.GrpcService;
 
@@ -12,9 +15,11 @@ import org.springframework.grpc.server.service.GrpcService;
 public class UserGrpcService extends UserServiceGrpc.UserServiceImplBase {
 
     private final UserService userService;
+    private final AuthService authService;
 
-    public UserGrpcService(UserService userService){
+    public UserGrpcService(UserService userService, AuthService authService){
         this.userService = userService;
+        this.authService = authService;
     }
 
     @Override
@@ -30,6 +35,17 @@ public class UserGrpcService extends UserServiceGrpc.UserServiceImplBase {
                 .setStatus(user.getStatus().getName())
                 .build();
         responseObserver.onNext(userResponse);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void login(LoginRequest loginRequest, StreamObserver<LoginResponse> responseObserver){
+        String token = authService.login(loginRequest.getEmail(), loginRequest.getPassword());
+
+        LoginResponse loginResponse = LoginResponse.newBuilder()
+                .setToken(token)
+                .build();
+        responseObserver.onNext(loginResponse);
         responseObserver.onCompleted();
     }
 }

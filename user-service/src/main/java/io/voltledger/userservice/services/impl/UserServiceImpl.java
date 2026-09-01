@@ -4,6 +4,8 @@ import io.voltledger.userservice.entities.Users;
 import io.voltledger.userservice.repositories.UsersRepository;
 import io.voltledger.userservice.services.UserService;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service

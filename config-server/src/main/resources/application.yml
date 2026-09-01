@@ -14,3 +14,9 @@ spring:
           password: ${GITHUB_TOKEN}
           clone-on-start: true
           search-paths: '{application}'
+
+logging:
+  level:
+    io:
+      voltledger:
+        configserver: TRACE
